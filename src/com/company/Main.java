@@ -1,4 +1,5 @@
 package com.company;
+
 import java.util.*;
 
 public class Main {
@@ -12,13 +13,15 @@ public class Main {
         String numAsString;
         numAsString = String.valueOf(num);
 
-        for (int i = 1; i <= num; i++) {
-            int temp = fibonacci(i);
-            numbers = numbers + temp + ",";
+        for (int i = -1; i <= num; i++) {
+            int temp = fibonacci(i + 1);
+            numbers = numbers + temp + ", ";
             if (temp >= num) {
                 break;
             }
         }
+
+        numbers = numbers.substring(0, numbers.length() - 2);
 
         if (numbers.contains(numAsString)) {
             System.out.println(num + " is a Fibonacci number. Here is the list leading up to it: " + numbers);
@@ -29,7 +32,11 @@ public class Main {
     }
 
     public static int fibonacci(int n) {
-        if (n <= 1)
+        if (n == 0)
+        {
+            return 0;
+        }
+        else if (n==1)
         {
             return n;
         }
@@ -38,9 +45,4 @@ public class Main {
             return fibonacci(n-1) + fibonacci(n-2);
         }
     }
-
 }
-
-
-
-
